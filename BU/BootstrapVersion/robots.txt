@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /js
+Disallow: /bootstrap
+Disallow: /css
+Allow: /media
+Allow: /pages

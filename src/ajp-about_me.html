@@ -1,0 +1,186 @@
+<!-- @license Copyright (c) 2016 The Polymer Project Authors. All rights reserved. This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as part of the polymer project is also subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt -->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="ajp-category-data.html">
+<link rel="import" href="ajp-common-styles.html">
+<link rel="import" href="ajp-form-styles.html">
+<link rel="import" href="ajp-image.html">
+
+<dom-module id="ajp-about_me">
+
+	<template>
+
+		<style include="ajp-common-styles ajp-form-styles">
+
+			.hero-image {
+				position: relative;
+				height: 320px;
+				overflow: hidden;
+				margin-bottom: 32px;
+			}
+
+			.hero-image {
+				--ajp-image-img: {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: -9999px;
+					right: -9999px;
+					max-width: none;
+				};
+			}
+
+			.grid {
+				@apply(--layout-horizontal);
+				@apply(--layout-wrap);
+				@apply(--layout-justified);
+				margin: 0 10px 32px 10px;
+			}
+
+			.grid > a {
+				-webkit-flex: 1 1;
+				flex: 1 1;
+				-webkit-flex-basis: 33%;
+				flex-basis: 33%;
+				max-width: 33%;
+				text-decoration: none;
+			}
+
+			.photoMe {
+				float:left;
+				width:215px;
+				margin-right:20px;
+				margin-bottom:20px;
+				height: 280px;
+			}
+
+			@media (max-width: 767px) {
+				.hero-image {
+					display: none;
+				}
+
+				.grid > a {
+					-webkit-flex-basis: 50%;
+					flex-basis: 50%;
+					max-width: 50%;
+				}
+			}
+
+		</style>
+
+		<!--
+			app-route provides the name of the category.
+		-->
+		<app-route
+				route="[[route]]"
+				pattern="/:category"
+				data="{{routeData}}"></app-route>
+
+		<!--
+			ajp-category-data provides the category data for a given category name.
+		-->
+		<ajp-category-data
+				id="categoryData"
+				category-name="[[routeData.category]]"
+				category="{{category}}"
+				failure="{{failure}}"></ajp-category-data>
+
+		<ajp-image
+				alt="[[category.title]]"
+				src="[[category.image]]"
+				placeholder-img="[[category.placeholder]]" class="hero-image"></ajp-image>
+
+		<div class="main-frame" hidden$="[[failure]]">
+
+			<a href="[[category.imageMe]]" target="_blank">
+				<ajp-image
+					alt="[[category.titleMe]]"
+					src="[[category.imageMe]]"
+					placeholder-img=""
+					class="photoMe"></ajp-image>
+			</a>
+
+			<header class="header left">
+				<h1>[[category.title]]</h1>
+				<span></span>
+			</header>
+
+			<p class="justify">I am a young enthusiast in learning technologies myself. Help is always welcomed. I hope that this site helps someone which will probably help me for future reference if I need to look back.</p>
+			<p>I work at ImageTrend on the Patient Registry team as a Software Developer I.</p>
+			<p class="justify">Also, I am helping Rina Namiwa with designing webpages and Python (My girlfriend pictured over there), plus my good friend Victor Johnson which he is learning a lot about JavaScript and Python.</p>
+			<p>My current projects are <a href="https://elopparty.com" target="_blank">ElopParty.com</a>, AnthonyJamesPearson.com, and <a href="http://WebsiteDormmates.com" target="_blank">WebsiteDormmates.com</a>.</p>
+			<p>My hobbies are paintballing, longboarding, and the outdoors.</p>
+			<p>I am active with my chapter, Theta Rho, in Tau Kappa Epsilon as an Alumni.</p>
+			<hr>
+			<p class="justify">This site is meant to serve you. Okay yea, maybe it might be promoting myself. But I don’t see you doing anything about it, so buzz off haters. I’m just kidding, come back, I love you haters. Hey just an alert, if you see anyone hating, especially if it’s me, hit them in the arm for me and tell them to not hate me cuz’ they ain't me.</p>
+			<p class="justify">On a more serious note, if I don’t do a good job, let me know, call me out. I am a 100% most horribler-erest writer. I did not go to school to be an English Nazi. I turn to you guys to be my editors. Furthermore, I want to provide very clear and concise posts. If I am not posting something correctly, or it could be improved upon, let me know. I am struggling with you. There is a lot of bad documentation out there and I hate reading. I just want things to work. You get what I am saying? Bet you do. Plus the stuff out there is works only for certain versions, certain operating systems. I do not think Linux is better than Windows. Sorry, had to say that statement. The notes and forms out there are just outdated or just not complete since I am a noob. We all are. When I am working with something new, which I usually have a set of problems, I scour the forms and I see an answers of just do this and then run this. I usually think to myself how the hell do I run that? Do you get that too? Who gets this? My belief is taht the full solution is a simple, intuitive and easy to follow solution.</p>
+			<br>
+			<p>Anthony J. Pearson<br>Anthony.James.Pearson @ gmail.com</p>
+
+			<br>
+
+		</div>
+
+		<!--
+			ajp-network-warning shows a warning message when the items can't be rendered due
+			to network conditions.
+		-->
+		<ajp-network-warning
+				hidden$="[[!failure]]"
+				offline="[[offline]]"
+				on-try-reconnect="_tryReconnect"></ajp-network-warning>
+
+	</template>
+
+	<script>
+
+		Polymer({
+			is: 'ajp-about_me',
+
+			properties: {
+				category: Object,
+				route: Object,
+				routeData: Object,
+				visible: Boolean,
+
+				offline: {
+					type: Boolean,
+					observer: '_offlineChanged'
+				},
+
+				failure: Boolean
+			},
+
+			observers: [
+				'_categoryChanged(category, visible)'
+			],
+
+			_categoryChanged: function(category, visible) {
+				if (visible) {
+					this.debounce('change-section', function() {
+						// Notify the category and the page's title
+						this.fire('change-section', {
+							category: category.name,
+							title: category.title
+						});
+					});
+				}
+			},
+
+			_tryReconnect: function() {
+				this.$.categoryData.refresh();
+			},
+
+			_offlineChanged: function(offline) {
+				if (!offline) {
+					this._tryReconnect();
+				}
+			}
+
+		});
+
+	</script>
+
+</dom-module>

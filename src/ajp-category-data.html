@@ -1,0 +1,181 @@
+<!-- @license Copyright (c) 2016 The Polymer Project Authors. All rights reserved. This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as part of the polymer project is also subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt -->
+
+<!-- This may help for placeholders: http://freeonlinetools24.com/base64-image -->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="ajp-category-data">
+
+	<script>
+	(function() {
+		var categoryList = [
+			{
+				name: 'home',
+				title: 'Home',
+				route: '',
+				image: '/images/ajp_1.jpg',
+				placeholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAADCAYAAACj1j4PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANdEVYdFNvdXJjZQBYVDEwNDnzkNVQAAAAD3RFWHRTb2Z0d2FyZQBQaWNhc2EXkcBRAAAAIHRFWHRDcmVhdGlvblRpbWUAMjAxNDowNzowNSAxMDo0ODozMVHVfrgAAAAhdEVYdENyZWF0aW9uIFRpbWUAMjAxNDowNzowNSAxMDo0ODozMdlaHX4AAACkSURBVBhXDc27DsFQAIDh/9A2bulFakAqLFZewQtYvYLB83gUaweJzWgRk6kRrUqvcVqH7wU+sT9clGENSaMAHYk5GNGlxGiZJHmFVF967RYNIZA1FHnC0fcRu+1GaVISPwLWqwXny41n9iGOKrKyIk7hLTVGdslyXBEWBZFy0BzbpSNy7sEbafQ4XcP/XPNKSuYzj9kEvGEbVRfQ7GPpGlPd5QcUh0MKIElZeAAAAABJRU5ErkJggg=='
+			},
+			{
+				name: 'posts',
+				title: 'My Posts',
+				route: '/list',
+				image: '/images/ajp_2.jpg',
+				placeholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAADCAYAAACj1j4PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAANdEVYdFNvdXJjZQBYVDEwNDnzkNVQAAAAD3RFWHRTb2Z0d2FyZQBQaWNhc2EXkcBRAAAAB3RJTUUH3gcFCwYTv6/yZAAAACB0RVh0Q3JlYXRpb25UaW1lADIwMTQ6MDc6MDUgMTE6MDY6MTneEE5PAAAAIXRFWHRDcmVhdGlvbiBUaW1lADIwMTQ6MDc6MDUgMTE6MDY6MTlWny2JAAAAnklEQVQYVxWOPQuCUAAA7/n8KrAvykCStoaWHKIIHC1oC1qaWvqX/ZiGaBQCQ0z0+bJbbrjlxOF001WR4kcXqnlCWeVYEhpVYv/dNBwXNveH4ry06Fk1RvlGxOtQe12BICdabdglVxrpMZhFTDoaV9Z8yhrHkWRfxZ9KacQ+HmvHNTGokWgMDTYmQRCSiilquKXA5/nKGPXbYqj2yuIHKpI05szVFHcAAAAASUVORK5CYII='
+			},
+			{
+				name: 'about_me',
+				title: 'About Me',
+				route: '',
+				image: '/images/ajp_3.jpg',
+				placeholder: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAADCAYAAACj1j4PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAANdEVYdFNvdXJjZQBYVDEwNDnzkNVQAAAAD3RFWHRTb2Z0d2FyZQBQaWNhc2EXkcBRAAAAB3RJTUUH3gcFCg4KEt+6mwAAACB0RVh0Q3JlYXRpb25UaW1lADIwMTQ6MDc6MDUgMTA6MTQ6MTCW0hxkAAAAIXRFWHRDcmVhdGlvbiBUaW1lADIwMTQ6MDc6MDUgMTA6MTQ6MTAeXX+iAAAAnUlEQVQYVw3LQQ+BYACA4fdLaSpZtK801s3mB3T0sxyZP2k2c2h00kItFZo4PMdHbLbrDgFD0+D97Jj7E07HlPh8xR2bFGWDPx2hqpDeCsJlxGyxoudJf2fZPar8Q122VLWCabX0B4I0y2lebx5FRXavkNIhiS80aYwSRS62IZDBAKmH7A8JivrFMDT8wML7y/7RcS36ukpdawjF4QcLFjdOiosogwAAAABJRU5ErkJggg==',
+				titleMe: 'Rina and Me!',
+				imageMe: '/images/a1.jpg'
+			}
+			// {
+			// 	name: 'mens_outerwear',
+			// 	title: 'Test List',
+			//  	route: '/list',
+			// 	image: '/images/mens_outerwear.jpg',
+			// 	placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAXAABAQEAAAAAAAAAAAAAAAAAAAIEAQEAAAAAAAAAAAAAAAAAAAACEAAAAwYHAQAAAAAAAAAAAAAAERMBAhIyYhQhkaEDIwUVNREBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A3dkr5e8tfpwuneJITOzIcmQpit037Bw4mnCVNOpAAQv/2Q=='
+			// },
+			// {
+			// 	name: 'mens_outerwear',
+			// 	title: 'Men\'s Outerwear',
+			// 	route: '/list',
+			// 	image: '/images/mens_outerwear.jpg',
+			// 	placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAXAABAQEAAAAAAAAAAAAAAAAAAAIEAQEAAAAAAAAAAAAAAAAAAAACEAAAAwYHAQAAAAAAAAAAAAAAERMBAhIyYhQhkaEDIwUVNREBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A3dkr5e8tfpwuneJITOzIcmQpit037Bw4mnCVNOpAAQv/2Q=='
+			// },
+			// {
+			// 	name: 'ladies_outerwear',
+			// 	title: 'Ladies Outerwear',
+			// 	route: '/list',
+			// 	image: '/images/ladies_outerwear.jpg',
+			// 	placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAWQABAQAAAAAAAAAAAAAAAAAAAAEBAQEAAAAAAAAAAAAAAAAAAAIDEAABAwMFAQAAAAAAAAAAAAARAAEygRIDIlITMwUVEQEBAAAAAAAAAAAAAAAAAAAAQf/aAAwDAQACEQMRAD8Avqn5meQ0kwk1UyclmLtNj7L4PQoioFf/2Q=='
+			// },
+			// {
+			// 	name: 'mens_tshirts',
+			// 	title: 'Men\'s T-Shirts',
+			// 	route: '/list',
+			// 	image: '/images/mens_tshirts.jpg',
+			// 	placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAWwABAQEAAAAAAAAAAAAAAAAAAAMEAQEAAAAAAAAAAAAAAAAAAAAAEAABAwEJAAAAAAAAAAAAAAARAAESEyFhodEygjMUBREAAwAAAAAAAAAAAAAAAAAAAEFC/9oADAMBAAIRAxEAPwDb7kupZU1MTGnvOCgxpvzEXTyRElCmf//Z'
+			// },
+			// {
+			// 	name: 'ladies_tshirts',
+			// 	title: 'Ladies T-Shirts',
+			// 	route: '/list',
+			// 	image: '/images/ladies_tshirts.jpg',
+			// 	placeholder: 'data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAeAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAAQCwsLDAsQDAwQFw8NDxcbFBAQFBsfFxcXFxcfHhcaGhoaFx4eIyUnJSMeLy8zMy8vQEBAQEBAQEBAQEBAQEBAAREPDxETERUSEhUUERQRFBoUFhYUGiYaGhwaGiYwIx4eHh4jMCsuJycnLis1NTAwNTVAQD9AQEBAQEBAQEBAQED/wAARCAADAA4DASIAAhEBAxEB/8QAXwABAQEAAAAAAAAAAAAAAAAAAAMFAQEBAAAAAAAAAAAAAAAAAAABAhAAAQIDCQAAAAAAAAAAAAAAEQABITETYZECEjJCAzMVEQACAwAAAAAAAAAAAAAAAAAAATFBgf/aAAwDAQACEQMRAD8AzeADAZiFc5J7BC9Scek3VrtooilSNaf/2Q=='
+			// }
+		];
+
+		Polymer({
+
+			is: 'ajp-category-data',
+
+			properties: {
+
+				categoryName: String,
+
+				itemName: String,
+
+				categories: {
+					type: Array,
+					value: categoryList,
+					readOnly: true,
+					notify: true
+				},
+
+				category: {
+					type: Object,
+					computed: '_computeCategory(categoryName)',
+					notify: true
+				},
+
+				item: {
+					type: Object,
+					computed: '_computeItem(category.items, itemName)',
+					notify: true
+				},
+
+				failure: {
+					type: Boolean,
+					notify: true,
+					readOnly: true
+				}
+			},
+
+			_getCategoryObject: function(categoryName) {
+				for (var i = 0, c; c = this.categories[i]; ++i) {
+					if (c.name === categoryName) {
+						return c;
+					}
+				}
+				return null;
+			},
+
+			_computeCategory: function(categoryName) {
+				// Fetch the items of the category. Note that the fetch is asynchronous,
+				// which means `category.items` may not be set initially (but that path
+				// will be notified when the fetch completes).
+				var categoryObj = this._getCategoryObject(categoryName);
+				this._fetchItems(categoryObj, 1);
+				return categoryObj;
+			},
+
+			_computeItem: function(items, itemName) {
+				for (var i = 0, item; item = items[i]; ++i) {
+					if (item.name === itemName) {
+						return item;
+					}
+				}
+			},
+
+			_fetchItems: function(category, attempts) {
+				this._setFailure(false);
+				// Only fetch the items of a category if it has not been previously set.
+				if (!category || category.items) {
+					return;
+				}
+				this._getResource({
+					url: '/data/' + category.name + '.json',
+					onLoad: function(e) {
+						if (category.route == '/list') {
+							this.set('category.items', JSON.parse(e.target.responseText));
+						}
+					},
+					onError: function(e) {
+						this._setFailure(true);
+					}
+				}, attempts);
+			},
+
+			_getResource: function(rq, attempts) {
+				var xhr = new XMLHttpRequest();
+				xhr.addEventListener('load', rq.onLoad.bind(this));
+				xhr.addEventListener('error', function(e) {
+					// Flaky connections might fail fetching resources
+					if (attempts > 1) {
+						this.debounce('_getResource', this._getResource.bind(this, rq, attempts - 1), 200);
+					} else {
+						rq.onError.call(this, e);
+					}
+				}.bind(this));
+
+				xhr.open('GET', rq.url);
+				xhr.send();
+			},
+
+			refresh: function() {
+				if (this.categoryName) {
+					// Try at most 3 times to get the items.
+					this._fetchItems(this._getCategoryObject(this.categoryName), 3);
+				}
+			}
+
+		});
+
+	})();
+	</script>
+
+</dom-module>

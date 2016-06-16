@@ -1,0 +1,21 @@
+{
+  "name": "Anthony James Pearson",
+  "short_name": "Anthony Pearson",
+  "icons": [{
+      "src": "images/ajp-icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "images/ajp-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },{
+      "src": "images/ajp-icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    }],
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "standalone",
+  "theme_color": "#fff"
+}

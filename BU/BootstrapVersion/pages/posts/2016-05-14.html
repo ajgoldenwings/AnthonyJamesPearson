@@ -1,0 +1,42 @@
+<h2>CREATING YOUR FIRST WEBSITE WITH IIS</h2>
+<em>May 2016</em>
+<br>
+<br>
+<p>Let me first say YES this is my first post!</p>
+<p class="justify">Secondly, this post is not your answer in how to create your first website. There are too many ways to do it. I can only make recommendations. The foremost is to have fun!</p>
+<p class="justify">My girlfriend, Rina, has been wanting to make a site but has no idea where to start. Luckily, I have a friend, Victor, who has been learning a lot in the past few months. So I connected them and it seems that it mutually benefits both of them. Having multiple code friends or mentors is better than one.</p>
+<p class="justify">Learn the basics. That is html. This can be accomplished by going to any tutorial site. I like w3schools.com/html/. If you find that to complicated try searching on your neighborhood friendly search site 'learn html'. Go through and learn, read, explore! Go to multiple sources, take a class, and ask questions to your tech guru.</p>
+<p class="justify">Learn CSS, JavaScript (not to be confused with Java, even though Java is a fun language to learn), get comfortable with a framework like Bootstrap. The choices are endless.</p>
+<p class="justify">Google is your friend. Your questions have been asked. Go search them on the internet.</p>
+<br>
+<p>I'll end lastly with some help setting up a site so you don't have to double click you html file to show it on your browser. You can just type localhost, or better yet, 'mywebsite' in the URL.</p>
+<p class="justify">First you will need IIS. Thankfully it is built into windows. If you are not on windows, I am sorry. IIS is a web server. If you want to know more what it is, google it. Let's activate it.</p>
+<a href="media/p1.jpg" target="_blank" class="center"><img src="media/p1.jpg" class="img-thumbnail img-article" alt="Turn on windows features"></a>
+<a href="media/p2.jpg" target="_blank" class="center"><img src="media/p2.jpg" class="img-thumbnail img-article" alt="Turn on IIS"></a>
+<p>Go to programs and features and follow the arrows.</p>
+<p class="justify">IIS should start automatically and be in your start menu after pressing OK. Full disclosure, I am doing this my memory so I might miss a step.</p>
+<a href="media/p3.jpg" target="_blank" class="center"><img src="media/p3.jpg" class="img-thumbnail img-article" alt="IIS main screen"></a>
+<p class="justify">You will see this screen. From here you will want to open the Sites folder on the left hand side. You should see Default Web Site with a world by it. Click that too.</p>
+<p class="justify">On the right hand side, you will see some more stuff. Click Basic Settings. Enter the Physical Path. Click test settings and hopefully you will get two green checks. If you don't, click connect as and enter your username (full email) and password for logging into your computer. If you use a different domain for an email, you must put the domain name with a '\' and then your email. It will sort of look like this DOMAINNAME\youremail@DOMAINNAME.com. I am not sure why this just works without entering your user credentials but please let me know if you know what I am doing wrong.</p>
+<p class="justify">At this point, click 'Browse *:80 (http)' and you should see your site as localhost.</p>
+<p class="justify">Say we want to change that to mywebsite. On the left side of IIS, right click the Sites folder and choose 'Add Website'.</p>
+<a href="media/p4.jpg" target="_blank" class="center"><img src="media/p4.jpg" class="img-thumbnail img-article" alt="Add Website"></a>
+<p class="justify">Enter a site name, mywebsite. Set the Physical Path. Connect as you. Leave the Binding area alone except the Host name where you will put 'mywebsite'. Click OK.</p>
+<p class="justify">If you browse mywebsite, you will see that it does not work. To fix this, go browse to <em>C:\Windows\System32\drivers\etc</em>. Edit the hosts file.  Oops, you may not have permission. To remedy this, right click the hosts file, click the Security tab, click Edit, select Users and give yourself full control.</p>
+<a href="media/p5.jpg" target="_blank" class="center"><img src="media/p5.jpg" class="img-thumbnail img-article" alt="Set Permissions"></a>
+<p class="justify">Now edit the hosts file. At the bottom of the file, add '127.0.0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mywebsite'. Save. </p>
+<a href="media/p6.jpg" target="_blank" class="center"><img src="media/p6.jpg" class="img-thumbnail img-article" alt="Hosts File"></a>
+<p>Now try browsing mywebsite.</p>
+<p class="justify">Let me know if I should add any more details, suggestions, stories, photos or just complement me. You're welcome.</p>
+
+<br>
+
+<script>
+$(document).ready(function(){
+	$('title').text("Good Things To Know By Anthony Pearson - CREATING YOUR FIRST WEBSITE WITH IIS");
+	$('meta[name=Keywords]').attr('content', 'Website,IIS,hosts,binding');
+	$('meta[name=description]').attr('content', 'Create your first website. Some recommendations too.');
+});
+</script>
+
+<div class="fb-comments" data-href="http://anthonyjamespearson.com/#2016-05-14" data-width="100%" data-numposts="5"></div>

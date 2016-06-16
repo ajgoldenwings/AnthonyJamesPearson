@@ -1,0 +1,49 @@
+<h2>REGISTER DOMAIN WITH ROUTE 52 AND DIRECT IT TO S3</h2>
+<em>May 2016</em>
+<br>
+<br>
+<p class="justify">It took me to do this a while the first time but after a couple of times doing this it is as easy as 1, 2, 3. Well, it takes about an hour to two hours, maybe less. But you should be in the right area if you want to get your own domain name for your website. Let's start.</p>
+<a href="media/p7.jpg" target="_blank" class="center"><img src="media/p7.jpg" class="img-thumbnail img-article" alt="AWS Console"></a>
+<p class="justify">Let's start with going to the AWS Console. Oh yes, please review my earlier posts if you have not.</p>
+<a href="media/p9.jpg" target="_blank" class="center"><img src="media/p9.jpg" class="img-thumbnail img-article" alt="Route 53"></a>
+<p class="justify">We will begin with clicking Route 53. Go ahead and choose a domain name and check if it is available. Review that you spelled it correctly and press add to cart. NOTICE you will pay monies. Add to cart if it exists.</p>
+<a href="media/p11.jpg" target="_blank" class="center"><img src="media/p11.jpg" class="img-thumbnail img-article" alt="Register Domain"></a>
+<p>Review again and scroll down and click continue.</p>
+<a href="media/p12.jpg" target="_blank" class="center"><img src="media/p12.jpg" class="img-thumbnail img-article" alt="Continue Purchase"></a>
+<p class="justify">Put your contact details. I recommend clicking the hide contact information if you do not want to receive random crap. Click Continue. Check I have read and agree to the AWS Domain Name Registration Agreement. Click Complete. Purchase.</p>
+<a href="media/p13.jpg" target="_blank" class="center"><img src="media/p13.jpg" class="img-thumbnail img-article" alt="Complete Purchase"></a>
+<p>You will be redirected and will see a link where your domain will be populated when finished. This domain registration process should take a good chunck of your time.</p>
+<a href="media/p20.jpg" target="_blank" class="center"><img src="media/p20.jpg" class="img-thumbnail img-article" alt="Domain Registration Status"></a>
+<p class="justify">Take five and go do something else. You should get an email saying your domain successfully registered in around 15 minutes.</p>
+<a href="media/p21.jpg" target="_blank" class="center"><img src="media/p21.jpg" class="img-thumbnail img-article" alt="Email of successful registration"></a>
+<p class="center">Fuck Yea! A domain has been born.</p>
+<a href="media/p22.jpg" target="_blank" class="center"><img src="media/p22.jpg" class="img-thumbnail img-article" alt="Fuck Yea"></a>
+<p class="justify">Oops, sorry, meant to put that at the bottom. We still need to do some routing. We are half way there. I believe in you! Once you’re ready go back to your AWS console and click Route 53, if you are not already in it. You will notice that it will show that your site has been registered. We will want to go to your new hosted zone. Click on hosted zones.</p>
+<a href="media/p23.jpg" target="_blank" class="center"><img src="media/p23.jpg" class="img-thumbnail img-article" alt="Route 53 to Hosted Zones"></a>
+<p>Then click on your newly created hosted zone.</p>
+<a href="media/p24.jpg" target="_blank" class="center"><img src="media/p24.jpg" class="img-thumbnail img-article" alt="Hosted Zones to zone"></a>
+<p class="justify">You will see that the next screen shows two records. One is the Name Server. The other is the Start of Authority. What are these? I do not want to answer since google may have a better answer for you. But we will need to create two records. They will be the www and the non-www links to your website. For example: www.yourcoolwebsite.com and yourcoolwebsite.com. That is what we will be adding.</p>
+<a href="media/p25.jpg" target="_blank" class="center"><img src="media/p25.jpg" class="img-thumbnail img-article" alt="Hosted Zone records"></a>
+<p class="justify">Let's start with the www version of the site. Put www in the name. Check Yes for Alias. Select the S3 website endpoint for the Alias Target. Leave everything else as is and click create.</p>
+<a href="media/p26.jpg" target="_blank" class="center"><img src="media/p26.jpg" class="img-thumbnail img-article" alt="Create Record www"></a>
+<p class="justify">Then we will do the same thing but for the non-www link. Click Create Record Set for a second time. Leave name empty this time. Click Alias Target and scroll down to Record sets and click yours. Click Create.</p>
+<a href="media/p27.jpg" target="_blank" class="center"><img src="media/p27.jpg" class="img-thumbnail img-article" alt="Create Record non-www"></a>
+<p class="justify">You see the www version when you click the Alias Target because in the last post we added permissions to the bucket policy. We only did this for the www version. As of now, you may use the www version of the site. Before you do that lets make the non-www version of the site redirect to the www version of the site.</p>
+<p>Go back to the AWS Console and click S3.</p>
+<a href="media/p8.jpg" target="_blank" class="center"><img src="media/p8.jpg" class="img-thumbnail img-article" alt="S3"></a>
+<p class="justify">Click the non-www version of your site in S3. Click the properties button. Drop down the Static Web Hosting section. Click Redirect all requestes to another host name. Enter the www version of the site. In my case it was smart enought to enter it in. Click Save.</p>
+<a href="media/p28.jpg" target="_blank" class="center"><img src="media/p28.jpg" class="img-thumbnail img-article" alt="Redirect non-www site"></a>
+<p class="justify">And there you have it. Both versions work and you have very own website.</p>
+<p>Stay brilliant my friends.</p>
+
+<br>
+
+<script>
+$(document).ready(function(){
+	$('title').text("Good Things To Know By Anthony Pearson - REGISTER DOMAIN WITH ROUTE 52 AND DIRECT IT TO S3");
+	$('meta[name=Keywords]').attr('content', 'Domain,Route 53,Hosted Zones,non-www,www,Redirect,S3,AWS,Alias Target');
+	$('meta[name=description]').attr('content', 'Register your domain and direct it to your www S3 website. Redirect from non-www to www.');
+});
+</script>
+
+<div class="fb-comments" data-href="http://anthonyjamespearson.com/#posts/2016-05-18" data-width="100%" data-numposts="5"></div>
