@@ -307,6 +307,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			listeners: {
 				'change-section': '_onChangeSection',
 				'announce': '_onAnnounce',
+				'cbn-copy-clipboard-copied': '_onClip',
 				'dom-change': '_domChange'
 			},
 
@@ -405,6 +406,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				if (detail.title) {
 					this._announce(detail.title);
 				}
+			},
+
+			_onClip: function(e) {
+				// this._announce(e.detail.text);
+
+					if (!this._clipSnackbar) {
+						this._clipSnackbar = document.createElement('ajp-snackbar');
+						Polymer.dom(this.root).appendChild(this._clipSnackbar);
+					}
+					Polymer.dom(this._clipSnackbar).innerHTML = 'Text has been copied.';
+					this._clipSnackbar.open();
 			},
 
 			// Elements in the app can notify a change to be a11y announced.
