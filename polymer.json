@@ -2,7 +2,6 @@
   "entrypoint": "index.html",
   "shell": "src/ajp-app.html",
   "fragments": [
-    "src/ajp-homepage.html",
     "src/ajp-about_me.html",
     "src/ajp-list.html",
     "src/ajp-detail.html",
