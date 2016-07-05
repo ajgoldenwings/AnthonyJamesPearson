@@ -119,7 +119,8 @@
 				// which means `category.items` may not be set initially (but that path
 				// will be notified when the fetch completes).
 				var categoryObj = this._getCategoryObject(categoryName);
-				this._fetchItems(categoryObj, 1);
+				if (categoryObj != null && categoryObj.name == 'posts')
+					this._fetchItems(categoryObj, 1);
 				return categoryObj;
 			},
 
