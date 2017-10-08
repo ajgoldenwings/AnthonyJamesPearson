@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+		<title>Good Things To Know By Anthony Pearson</title>
+		<link rel="shortcut icon" sizes="32x32" href="/images/ajp-icon-32.png">
+		<meta name="description" content="Blog by Anthony">
+
+		<base href="/">
+
+		<link rel="manifest" href="/manifest.json">
+
+    <script>
+      window.Polymer = {rootPath: '/'};
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: Polymer.rootPath,
+          });
+        });
+      }
+    </script>
+
+		<script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+		<link rel="import" href="/src/ajp-app/ajp-app.html">
+
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+      }
+    </style>
+	</head>
+	<body>
+		<ajp-app></ajp-app>
+    <noscript>
+      JavaScript needs to be enabled to view this site.
+    </noscript>
+	</body>
+</html>

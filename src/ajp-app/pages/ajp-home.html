@@ -1,0 +1,52 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../components/ajp-image.html">
+<link rel="import" href="../components/ajp-button.html">
+<link rel="import" href="../styles/shared-styles.html">
+
+<link rel="import" href="ajp-page-data.html">
+
+<dom-module id="ajp-home">
+  <template>
+    <style include="shared-styles ajp-button">
+				:host {
+					display: block;
+				}
+
+				.item {
+					margin-bottom: 32px;
+				}
+		</style>
+
+		<ajp-page-data pages="{{pages}}"></ajp-page-data>
+
+		<br>
+		<br>
+
+		<template is="dom-repeat" items="[[pages]]" strip-whitespace>
+			<div class="item">
+				<a class="image-link" href$="[[item.route]]/#[[item.name]]">
+					<ajp-image src="[[item.image]]" alt="[[item.title]]" placeholder-img="[[item.placeholder]]"></ajp-image>
+				</a>
+				<h2>[[item.title]]</h2>
+				<ajp-button>
+					<a aria-label$="[[item.title]]" href$="[[item.route]]/#[[item.name]]">Enter</a>
+				</ajp-button>
+			</div>
+		</template>
+
+  </template>
+
+  <script>
+    class AjpHome extends Polymer.Element {
+      static get is() { return 'ajp-home'; }
+
+			static get properties() {
+				return {
+					pages: Array,
+				};
+			}
+    }
+
+    window.customElements.define(AjpHome.is, AjpHome);
+  </script>
+</dom-module>

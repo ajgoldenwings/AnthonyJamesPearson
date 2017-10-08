@@ -1,0 +1,245 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="components/ajp-image.html">
+
+<link rel="import" href="styles/shared-styles.html">
+
+<link rel="import" href="pages/ajp-page-data.html">
+
+<link rel="lazy-import" href="pages/ajp-home.html">
+<link rel="lazy-import" href="pages/ajp-posts.html">
+<link rel="lazy-import" href="pages/ajp-about.html">
+<link rel="lazy-import" href="pages/ajp-contact.html">
+
+<dom-module id="ajp-app">
+	<template>
+		<style include="shared-styles">
+			:host {
+				display: block;
+			}
+
+      .spacer {
+        @apply --layout;
+        @apply --layout-flex-auto;
+        @apply --layout-center-center;
+      }
+
+      #mainToolbar {
+        height: 110px;
+      }
+
+			#title {
+				/* border-top: 3px blue solid;
+				border-bottom: 3px red solid; */
+				border-top: 3px black solid;
+				border-bottom: 3px black solid;
+				user-select: none;
+			}
+
+			#title a {
+				text-decoration: none;
+				color: black;
+			}
+
+      app-header {
+        background-color: rgba(255, 255, 255, 0.95);
+        --app-header-shadow: {
+          box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
+          height: 10px;
+          bottom: -10px;
+        };
+      }
+
+      app-header:not([shadow]) {
+        border-bottom: 1px solid #ddd;
+      }
+
+      app-drawer {
+        --app-drawer-content-container: {
+          background-color: #f3f3f3;
+        };
+      }
+
+      paper-tab {
+        @apply --layout-flex-none;
+        padding: 0;
+        --paper-tab-ink: black;
+      }
+
+      paper-tab a {
+        @apply --layout-horizontal;
+        @apply --layout-center-center;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: black;
+        font-weight: 500;
+        padding: 0 20px;
+        height: 100%;
+    	  position: static;
+      }
+
+      paper-tabs {
+        --paper-tabs-selection-bar-color: black;
+        color: black;
+        font-size: 13px;
+    	  text-align: center;
+      }
+
+      /**
+       * Phone
+       */
+			@media (max-width: 850px) {
+				paper-tabs {
+					margin-left: -55px;
+				}
+				.spacer {
+					font-size: 0.65em;
+				}
+        #mainToolbar {
+          height: 64px;
+        }
+      }
+		</style>
+
+		<app-location route="{{route}}" use-hash-as-path></app-location>
+		<app-route
+			route="{{route}}"
+			pattern=":section"
+			data="{{sectionData}}"
+			tail="{{subRoute}}"></app-route>
+		<app-route
+			route="{{subRoute}}"
+			pattern="/:id"
+			data="{{subrouteData}}">
+
+		<ajp-page-data pages="{{pages}}"></ajp-page-data>
+
+		<iron-media-query query="max-width: 500px" query-matches="{{smallScreen}}"></iron-media-query>
+
+		<app-header-layout>
+			<app-header slot="header" effects="waterfall"  fixed="[[!smallScreen]]" condenses reveals>
+				<app-toolbar id="mainToolbar">
+					<div class="spacer">
+					<h1 id="title" main-title><a href="#home">[[_titleDisplay(smallScreen)]]</a></h1>
+					</div>
+				</app-toolbar>
+				<paper-tabs selected="[[selectedTab]]" scrollable sticky>
+					<template is="dom-repeat" items="[[sections]]" as="section">
+						<paper-tab scrollable>
+							<a href="#[[section]]">[[section]]</a>
+						</paper-tab>
+					</template>
+				</paper-tabs>
+			</app-header>
+
+			<iron-pages selected="[[page]]"
+				attr-for-selected="name"
+				fallback-selection="home">
+				<template is="dom-repeat" items="[[pages]]" strip-whitespace>
+					<div class="item" name="[[item.name]]">
+						<br>
+						<br>
+						<a class="image-link" href$="[[item.route]]/#[[item.name]]">
+							<ajp-image src="[[item.image]]" alt="[[item.title]]" placeholder-img="[[item.placeholder]]"></ajp-image>
+						</a>
+					</div>
+				</template>
+			</iron-pages>
+
+			<iron-pages selected="[[page]]"
+				attr-for-selected="name"
+				fallback-selection="home">
+				<ajp-home name="home"></ajp-home>
+				<ajp-posts name="posts"></ajp-posts>
+				<ajp-about name="about"></ajp-about>
+				<ajp-contact name="contact"></ajp-contact>
+			</iron-pages>
+		</app-header-layout>
+
+	</template>
+
+	<script>
+		/**
+		 * @customElement
+		 * @polymer
+		 */
+		class AjpApp extends Polymer.Element {
+			static get is() { return 'ajp-app'; }
+
+			static get properties() {
+				return {
+					page: {
+						type: String,
+						reflectToAttribute: true,
+						computed: '_pageChanged(sectionData.section)',
+					},
+
+					sections: {
+						type: Array,
+						value: function() {
+							return [
+								'home',
+								'posts',
+								'about',
+								'contact'
+							];
+						}
+					},
+
+					selectedTab: {
+						type: Number,
+						computed: '_computeSelectedTab(sections, sectionData.section)'
+					},
+
+					pages: Array,
+
+					sectionData: Object,
+
+					route: Object,
+
+					subRoute: Object,
+
+					subrouteData: Object
+				};
+			}
+
+			_computeSelectedTab(sections, section) {
+				return sections.indexOf(section);
+			}
+
+			_pageChanged(page) {
+				var currentPage = page || 'home';
+				var resolvedPageUrl = this.resolveUrl('pages/ajp-' + currentPage + '.html');
+
+				Polymer.importHref(
+					resolvedPageUrl,
+					null,
+					this._showPage404.bind(this),
+					true);
+				return currentPage;
+			}
+
+      _showPage404() {
+      	this.page = 'home';
+      }
+
+			_titleDisplay(smallScreen) {
+				if (smallScreen) {
+					return 'AJP';
+				} else {
+					return 'Anthony James Pearson';
+				}
+			}
+		}
+
+		window.customElements.define(AjpApp.is, AjpApp);
+	</script>
+</dom-module>

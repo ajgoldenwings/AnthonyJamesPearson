@@ -1,0 +1,106 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="shared-styles">
+  <template>
+    <style>
+			a:link {color: black;}
+			a:visited {color: black;}
+			a:hover {color: black;}
+			a:active {color: black;}
+
+			.image-link {
+				outline: none;
+			}
+
+			.image-link > ajp-image::after {
+				display: block;
+				content: '';
+				position: absolute;
+				transition-property: opacity;
+				transition-duration: 0s;
+				transition-delay: 90ms;
+				pointer-events: none;
+				opacity: 0;
+				top: 5px;
+				left: 5px;
+				right: 5px;
+				bottom: 5px;
+				outline: #2196F3 auto 5px;
+				outline: -moz-mac-focusring auto 5px;
+				outline: -webkit-focus-ring-color auto 5px;
+			}
+
+			.image-link:focus > ajp-image::after {
+				opacity: 1;
+			}
+
+			.item {
+				display: block;
+				text-decoration: none;
+				text-align: center;
+			}
+
+			ajp-image {
+				position: relative;
+				height: 220px;
+				overflow: hidden;
+				--ajp-image-img: {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: -9999px;
+					right: -9999px;
+					max-width: none;
+				};
+			}
+
+			h2 {
+				font-size: 1.6em;
+				font-weight: 500;
+				margin: 32px 0;
+			}
+
+			@media (max-width: 767px) {
+				ajp-image {
+					height: 240px;
+				}
+
+				h2 {
+					margin: 24px 0;
+				}
+			}
+
+      /**
+       * Desktop
+       */
+			@media (min-width: 850px) {
+				.main-frame {
+					margin: 0 auto;
+					padding: 0 79px 48px 79px;
+					max-width: 900px;
+					overflow: hidden;
+				}
+      }
+
+      /**
+       * Tablet
+       */
+			@media (max-width: 850px) and (min-width: 500px) {
+				.main-frame {
+					margin: 0 auto;
+					padding: 0 24px 48px 24px;
+					max-width: 900px;
+					overflow: hidden;
+				}
+      }
+    </style>
+  </template>
+
+	<script>
+		class SharedStyles extends Polymer.Element {
+			static get is() { return 'shared-styles'; }
+		}
+
+		window.customElements.define(SharedStyles.is, SharedStyles);
+	</script>
+</dom-module>

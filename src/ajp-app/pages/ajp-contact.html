@@ -1,0 +1,42 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../styles/shared-styles.html">
+
+<dom-module id="ajp-contact">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+		</style>
+
+		<div class="main-frame">
+			<h1>Contact</h1>
+			<b>Anthony J. Pearson</b>
+			<p>If you want to contact me for any matter, you can reach me in the email below. I promise I wont use your email for bad things.</p>
+			<p>Anthony.James.Pearson @ gmail.com</p>
+			<p>Follow <a class="twitter-follow-button"
+				href="https://twitter.com/ajgoldenwings"
+				data-size="large"
+				target="_blank">
+				@ajgoldenwings</a>
+			</p>
+
+		</div>
+	</template>
+
+  <script>
+    class AjpContact extends Polymer.Element {
+      static get is() { return 'ajp-contact'; }
+
+			static get properties() {
+				return {
+					route: Object
+				}
+			}
+    }
+
+    window.customElements.define(AjpContact.is, AjpContact);
+  </script>
+</dom-module>

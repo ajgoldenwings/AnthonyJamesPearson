@@ -1,0 +1,34 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../styles/shared-styles.html">
+
+<dom-module id="ajp-posts">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+		</style>
+
+		<div class="main-frame">
+			<h1>Posts</h1>
+			<p>Posts to come. I am first going to post the posts frome the old site and post the here.</p>
+			<p>Email me to tell me to hurry up.</p>
+		</div>
+	</template>
+
+  <script>
+    class AjpPosts extends Polymer.Element {
+      static get is() { return 'ajp-posts'; }
+
+			static get properties() {
+				return {
+					route: Object
+				}
+			}
+    }
+
+    window.customElements.define(AjpPosts.is, AjpPosts);
+  </script>
+</dom-module>
