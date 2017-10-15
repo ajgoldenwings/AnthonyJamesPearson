@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../styles/shared-styles.html">
 
 <dom-module id="ajp-contact">
@@ -12,17 +13,12 @@
 		</style>
 
 		<div class="main-frame">
-			<h1>Contact</h1>
-			<b>Anthony J. Pearson</b>
-			<p>If you want to contact me for any matter, you can reach me in the email below. I promise I wont use your email for bad things.</p>
-			<p>Anthony.James.Pearson @ gmail.com</p>
-			<p>Follow <a class="twitter-follow-button"
-				href="https://twitter.com/ajgoldenwings"
-				data-size="large"
-				target="_blank">
-				@ajgoldenwings</a>
-			</p>
-
+			<marked-element>
+				<div slot="markdown-html"></div>
+				<script type="text/markdown" src="../../../assets/documents/contact.md">
+					Loading...
+				</script>
+			</marked-element>
 		</div>
 	</template>
 
