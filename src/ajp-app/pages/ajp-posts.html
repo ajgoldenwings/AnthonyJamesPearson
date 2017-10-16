@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../styles/shared-styles.html">
 
 <dom-module id="ajp-posts">
@@ -9,12 +10,27 @@
 
         padding: 10px;
       }
+
+			h3 {
+				margin-bottom: 0px;
+			}
+
+			h6, p {
+				margin: 0px;
+			}
+
+			a {
+        text-decoration: none;
+			}
 		</style>
 
 		<div class="main-frame">
-			<h1>Posts</h1>
-			<p>Posts to come soon. I am first going to post the posts frome the old site.</p>
-			<p>Email me to tell me to hurry up.</p>
+			<marked-element>
+				<div slot="markdown-html"></div>
+				<script type="text/markdown" src="../../../assets/documents/posts.md">
+					Loading Posts...
+				</script>
+			</marked-element>
 		</div>
 	</template>
 

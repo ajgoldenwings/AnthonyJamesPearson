@@ -1,0 +1,64 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/marked-element/marked-element.html">
+<link rel="import" href="../styles/shared-styles.html">
+
+<dom-module id="ajp-post">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+			img {
+				height: 240px;
+			}
+		</style>
+
+		<div class="main-frame">
+
+			<marked-element>
+				<div slot="markdown-html"></div>
+				<script type="text/markdown" src="[[filepath]]">
+					Loading Posts...
+				</script>
+			</marked-element>
+		</div>
+	</template>
+
+  <script>
+    class AjpPost extends Polymer.Element {
+      static get is() { return 'ajp-post'; }
+
+			static get properties() {
+				return {
+					filename: {
+						type: String,
+						reflectToAttribute: true,
+						value: 'about'
+					},
+
+					filepath: {
+						type: String,
+						reflectToAttribute: true,
+						computed: '_filepath(filename)'
+					},
+
+					route: Object
+				}
+			}
+
+			_filepath(filename) {
+				var selected = filename || 'home';
+
+				if (selected = 'post')
+					selected = 'posts';
+
+				return "../../../assets/documents/" + filename + ".md";
+			}
+    }
+
+    window.customElements.define(AjpPost.is, AjpPost);
+  </script>
+</dom-module>

@@ -1,12 +1,12 @@
 {
-  "name": "Anthony James Pearson",
+  "name": "anthony-james-pearson",
   "description": "Blog by Anthony",
   "main": "index.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "app-layout": "PolymerElements/app-layout#^2.0.1",
     "paper-tabs": "PolymerElements/paper-tabs#^2.0.0",
-    "marked-element": "PolymerElements/marked-element#^2.3.0"
+    "marked-element": "git://github.com/ajgoldenwings/marked-element#2.3.0-ajp"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

@@ -6,4 +6,4 @@ If you want to contact me for any matter, you can reach me in the email below. I
 
 Anthony.James.Pearson @ gmail.com
 
-Follow [@ajgoldenwings](https://twitter.com/ajgoldenwings "newWindow")
+Follow [@ajgoldenwings](https://twitter.com/ajgoldenwings" target="_blank)

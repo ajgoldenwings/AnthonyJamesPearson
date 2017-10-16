@@ -15,6 +15,7 @@
 <link rel="import" href="pages/ajp-page-data.html">
 
 <link rel="lazy-import" href="pages/ajp-home.html">
+<link rel="lazy-import" href="pages/ajp-post.html">
 <link rel="lazy-import" href="pages/ajp-posts.html">
 <link rel="lazy-import" href="pages/ajp-about.html">
 <link rel="lazy-import" href="pages/ajp-contact.html">
@@ -114,6 +115,13 @@
           height: 64px;
         }
       }
+
+			@media (max-width: 500px) {
+			#title {
+					border-top: 3px blue solid;
+					border-bottom: 3px red solid;
+				}
+      }
 		</style>
 
 		<app-location route="{{route}}" use-hash-as-path></app-location>
@@ -165,6 +173,7 @@
 				attr-for-selected="name"
 				fallback-selection="home">
 				<ajp-home name="home"></ajp-home>
+				<ajp-post name="post" filename="[[subrouteData.id]]"></ajp-post>
 				<ajp-posts name="posts"></ajp-posts>
 				<ajp-about name="about"></ajp-about>
 				<ajp-contact name="contact"></ajp-contact>
@@ -190,7 +199,7 @@
 					page: {
 						type: String,
 						reflectToAttribute: true,
-						computed: '_pageChanged(sectionData.section)',
+						computed: '_pageChanged(sectionData.section)'
 					},
 
 					sections: {
@@ -223,6 +232,9 @@
 			}
 
 			_computeSelectedTab(sections, section) {
+				if (section == 'post') {
+					section = 'posts';
+				}
 				return sections.indexOf(section);
 			}
 
