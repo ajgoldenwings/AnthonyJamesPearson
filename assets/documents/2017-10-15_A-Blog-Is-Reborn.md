@@ -10,7 +10,7 @@ First thing I wanted to do is continue making it in the same JavaScript framewor
 
 Also, I wanted to make the site's source easier to read. This meant creating a good methodology for the Polymer Web Components.
 
-Lastly, I wanted to use an easier way to create posts. So, with the time I had, I have been searching for a good way to do this. I ended up with the perfect solution, markdown documents. There are some quirks here and there but should be cleaned up with some refactoring.
+Lastly, I wanted to use an easier way to create posts. So, with the time I had, I have been searching for a good way to do this. I ended up with the perfect solution, Markdown documents. There are some quirks here and there but should be cleaned up with some refactoring.
 
 Anyways, I hope to show some of this off in a future post and if you want, you can look at the source used to create this site.
 

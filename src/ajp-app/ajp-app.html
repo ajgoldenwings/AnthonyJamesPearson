@@ -14,11 +14,11 @@
 
 <link rel="import" href="pages/ajp-page-data.html">
 
-<link rel="lazy-import" href="pages/ajp-home.html">
-<link rel="lazy-import" href="pages/ajp-post.html">
-<link rel="lazy-import" href="pages/ajp-posts.html">
-<link rel="lazy-import" href="pages/ajp-about.html">
-<link rel="lazy-import" href="pages/ajp-contact.html">
+<link rel="lazy-import" href="pages/ajp-home.html?version=1">
+<link rel="lazy-import" href="pages/ajp-post.html?version=1">
+<link rel="lazy-import" href="pages/ajp-posts.html?version=1">
+<link rel="lazy-import" href="pages/ajp-about.html?version=1">
+<link rel="lazy-import" href="pages/ajp-contact.html?version=1">
 
 <dom-module id="ajp-app">
 	<template>
@@ -101,6 +101,11 @@
 				line-height: 24px;
 			}
 
+			footer a:visited, footer a:link, footer a {
+				text-decoration: none;
+				color: #757575;
+			}
+
       /**
        * Phone
        */
@@ -122,6 +127,8 @@
 					border-bottom: 3px red solid;
 				}
       }
+
+
 		</style>
 
 		<app-location route="{{route}}" use-hash-as-path></app-location>
@@ -139,50 +146,54 @@
 
 		<iron-media-query query="max-width: 500px" query-matches="{{smallScreen}}"></iron-media-query>
 
-		<app-header-layout>
-			<app-header slot="header" effects="waterfall"  fixed="[[!smallScreen]]" condenses reveals>
-				<app-toolbar id="mainToolbar">
-					<div class="spacer">
-					<h1 id="title" main-title><a href="#home">[[_titleDisplay(smallScreen)]]</a></h1>
-					</div>
-				</app-toolbar>
-				<paper-tabs selected="[[selectedTab]]" scrollable sticky>
-					<template is="dom-repeat" items="[[sections]]" as="section">
-						<paper-tab scrollable>
-							<a href="#[[section]]">[[section]]</a>
-						</paper-tab>
+		<app-drawer-layout fullbleed>
+
+			<app-header-layout has-scrolling-region>
+
+				<app-header slot="header" effects="waterfall" fixed="[[!smallScreen]]" condenses reveals>
+					<app-toolbar id="mainToolbar">
+						<div class="spacer">
+							<h1 id="title" main-title>
+								<a href="#home">[[_titleDisplay(smallScreen)]]</a>
+							</h1>
+						</div>
+					</app-toolbar>
+					<paper-tabs selected="[[selectedTab]]" scrollable sticky>
+						<template is="dom-repeat" items="[[sections]]" as="section">
+							<paper-tab scrollable>
+								<a href="#[[section]]">[[section]]</a>
+							</paper-tab>
+						</template>
+					</paper-tabs>
+				</app-header>
+
+				<iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="home">
+					<template is="dom-repeat" items="[[pages]]" strip-whitespace>
+						<div class="item" name="[[item.name]]">
+							<br>
+							<br>
+							<a class="image-link" href$="[[item.route]]/#[[item.name]]">
+								<ajp-image src="[[item.image]]" alt="[[item.title]]" placeholder-img="[[item.placeholder]]"></ajp-image>
+							</a>
+						</div>
 					</template>
-				</paper-tabs>
-			</app-header>
+				</iron-pages>
 
-			<iron-pages selected="[[page]]"
-				attr-for-selected="name"
-				fallback-selection="home">
-				<template is="dom-repeat" items="[[pages]]" strip-whitespace>
-					<div class="item" name="[[item.name]]">
-						<br>
-						<br>
-						<a class="image-link" href$="[[item.route]]/#[[item.name]]">
-							<ajp-image src="[[item.image]]" alt="[[item.title]]" placeholder-img="[[item.placeholder]]"></ajp-image>
-						</a>
-					</div>
-				</template>
-			</iron-pages>
+				<iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="home">
+					<ajp-home name="home"></ajp-home>
+					<ajp-post name="post" filename="[[subrouteData.id]]"></ajp-post>
+					<ajp-posts name="posts"></ajp-posts>
+					<ajp-about name="about"></ajp-about>
+					<ajp-contact name="contact"></ajp-contact>
+				</iron-pages>
 
-			<iron-pages selected="[[page]]"
-				attr-for-selected="name"
-				fallback-selection="home">
-				<ajp-home name="home"></ajp-home>
-				<ajp-post name="post" filename="[[subrouteData.id]]"></ajp-post>
-				<ajp-posts name="posts"></ajp-posts>
-				<ajp-about name="about"></ajp-about>
-				<ajp-contact name="contact"></ajp-contact>
-			</iron-pages>
-		</app-header-layout>
+				<footer>
+					<small><a href="https://twitter.com/ajgoldenwings" title="Twitter" target="_blank">A site made by Anthony</a></small>
+				</footer>
 
-		<footer>
-			<small>A site made by Anthony</small>
-		</footer>
+			</app-header-layout>
+
+		</app-drawer-layout>
 
 	</template>
 
@@ -240,6 +251,7 @@
 
 			_pageChanged(page) {
 				var currentPage = page || 'home';
+				Polymer.AppLayout.scroll({ top: 0, behavior: 'silent' });
 				var resolvedPageUrl = this.resolveUrl('pages/ajp-' + currentPage + '.html');
 
 				Polymer.importHref(

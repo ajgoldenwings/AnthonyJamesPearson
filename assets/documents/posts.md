@@ -1,5 +1,9 @@
 # Posts
 
+### [Building a Site with Markdown Document Pages and Polymer](#post/2017-10-21_Building-a-Site-with-Markdown-Document-Pages-and-Polymer)
+###### 2017-10-21
+Learn how to use Markdown in your own webpage. Also, a few hints of how to build out a site with multiple or dynamic pages with Markdown.
+
 ### [A Blog Is Reborn](#post/2017-10-15_A-Blog-Is-Reborn)
 ###### 2017-10-15
 A quick introduction of what I changed in the site and what my plans for the future.
