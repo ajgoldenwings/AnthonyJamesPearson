@@ -6,7 +6,9 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "app-layout": "PolymerElements/app-layout#^2.0.1",
     "paper-tabs": "PolymerElements/paper-tabs#^2.0.0",
-    "marked-element": "git://github.com/ajgoldenwings/marked-element#2.3.0-ajp"
+    "marked-element": "git://github.com/ajgoldenwings/marked-element#2.3.0-ajp",
+    "app-route": "PolymerElements/app-route#^2.0.3",
+    "iron-pages": "PolymerElements/iron-pages#^2.0.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
