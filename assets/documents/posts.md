@@ -2,8 +2,7 @@
 
 ### [My Reactions to React](#post/2017-11-25_My-Reactions-to-React)
 ###### 2017-11-25
-Anthony learns react. Well just breezing through it, looking over the documentation and going through the Tic-Tac-Toe tutorial with thoughts and comparisons.
-
+Anthony learns React. Well just breezing through it, looking over the documentation and going through the Tic-Tac-Toe tutorial with thoughts and comparisons.
 
 ### [Building a Site with Markdown Document Pages and Polymer](#post/2017-10-21_Building-a-Site-with-Markdown-Document-Pages-and-Polymer)
 ###### 2017-10-21
