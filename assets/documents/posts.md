@@ -1,5 +1,9 @@
 # Posts
 
+### [How to Create an Event Firebase and React Single Page Web App: Day 0](#post/2017-_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0)
+###### 2017-???-??
+Learn how to create a single page application using React as a front end and Firebase as your backend. We will start with initializing your project.
+
 ### [My Reactions to React](#post/2017-11-25_My-Reactions-to-React)
 ###### 2017-11-25
 Anthony learns React. Well just breezing through it, looking over the documentation and going through the Tic-Tac-Toe tutorial with thoughts and comparisons.
