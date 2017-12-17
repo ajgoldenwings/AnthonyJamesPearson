@@ -8,7 +8,7 @@ Here is a collection of examples, demos, or just whole solutions. These will be 
 
 ## All Demos
 
-* [2017-12-17 How to Create an Event Firebase and React Single Page Web App Day 0](http://ajgoldenwings.github.io/anthonyjamespearson/assets/demos/2017-12-17_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0)
+* [2017-12-17 How to Create an Event Firebase and React Single Page Web App Day 0](https://github.com/ajgoldenwings/AnthonyJamesPearson/tree/2017-October-Branch/assets/demos/2017-12-17_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0)
 
 
 [1]: http://www.anthonyjamespearson.com
