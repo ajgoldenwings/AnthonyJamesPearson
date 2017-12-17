@@ -4,7 +4,7 @@ Question. Why use Markdown when we can use plain HTML? You can do more with HTML
 
 Answer. Yes, you are right. I want to use Markdown because it cuts down on some of the complexities of HTML. Couple things. First, once you find a good Markdown file generator, you can write out precisely what you want down without the HTML tag complexities and not have to worry about CSS. You can see below that VSCode has a good preview editor.
 
-![](../assets/images/2017-10-21_2.png "Preview for MD files")
+![](../src/assets/images/2017-10-21_2.png "Preview for MD files")
 
 Second, as my blog site grew with posts, it was difficult formatting HTML into JSON and then be injected into the site. I did not want to have individual html import files since I did not want to treat them as HTML files or components. I want my posts to be treated as posts. Markdown looks to be the best choice to use.
 

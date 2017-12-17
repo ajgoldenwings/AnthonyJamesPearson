@@ -1,7 +1,7 @@
 # Posts
 
-### [How to Create an Event Firebase and React Single Page Web App: Day 0](#post/2017-_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0)
-###### 2017-???-??
+### [How to Create an Event Firebase and React Single Page Web App: Day 0](#post/2017-12-17_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0)
+###### 2017-12-17
 Learn how to create a single page application using React as a front end and Firebase as your backend. We will start with initializing your project.
 
 ### [My Reactions to React](#post/2017-11-25_My-Reactions-to-React)

@@ -16,13 +16,13 @@ I'll end lastly with some help setting up a site so you don't have to double cli
 
 First you will need IIS. Thankfully it is built into windows. If you are not on windows, I am sorry. IIS is a web server. If you want to know more what it is, google it. Let's activate it.
 
-![](../assets/images/p1.jpg "Turn on windows feature IIS")
+![](../src/assets/images/p1.jpg "Turn on windows feature IIS")
 
 Go to programs and features and follow the arrows.
 
 IIS should start automatically and be in your start menu after pressing OK. Full disclosure, I am doing this my memory so I might miss a step.
 
-![](../assets/images/p3.jpg "IIS main screen")
+![](../src/assets/images/p3.jpg "IIS main screen")
 
 You will see this screen. From here you will want to open the Sites folder on the left hand side. You should see Default Web Site with a world by it. Click that too.
 
@@ -32,17 +32,17 @@ At this point, click 'Browse *:80 (http)' and you should see your site as localh
 
 Say we want to change that to mywebsite. On the left side of IIS, right click the Sites folder and choose 'Add Website'.
 
-![](../assets/images/p4.jpg "Add Website")
+![](../src/assets/images/p4.jpg "Add Website")
 
 Enter a site name, mywebsite. Set the Physical Path. Connect as you. Leave the Binding area alone except the Host name where you will put 'mywebsite'. Click OK.
 
 If you browse mywebsite, you will see that it does not work. To fix this, go browse to <em>C:\\Windows\\System32\\drivers\\etc</em>. Edit the hosts file.  Oops, you may not have permission. To remedy this, right click the hosts file, click the Security tab, click Edit, select Users and give yourself full control.
 
-![](../assets/images/p5.jpg "Set Permissions")
+![](../src/assets/images/p5.jpg "Set Permissions")
 
 Now edit the hosts file. At the bottom of the file, add '127.0.0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mywebsite'. Save.
 
-![](../assets/images/p6.jpg "Hosts File")
+![](../src/assets/images/p6.jpg "Hosts File")
 
 Now try browsing mywebsite.
 
