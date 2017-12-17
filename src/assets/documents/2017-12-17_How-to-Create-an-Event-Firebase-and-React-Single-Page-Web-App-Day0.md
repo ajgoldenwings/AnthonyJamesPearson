@@ -256,5 +256,4 @@ If you have any questions please reach out.
 [Click here for the next day for Authentication](" target="_blank). <- not yet active
 
 ## Github files
-[2017-12-17 How to Create an Event Firebase and React Single Page Web App Day 0]
-(https://github.com/ajgoldenwings/AnthonyJamesPearson/tree/2017-October-Branch/assets/demos/2017-12-17_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0)
+[Click here](https://github.com/ajgoldenwings/AnthonyJamesPearson/tree/2017-October-Branch/assets/demos/2017-12-17_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0" target="_blank)
