@@ -11,9 +11,31 @@
         padding: 10px;
       }
 
-			img {
-				height: 240px;
+			ajp-image {
+				overflow: hidden;
+				clear:both;
+				padding: 6px 42px;
+				--ajp-image-img: {
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+					position: static;
+					top: 0;
+					bottom: 0;
+					left: -9999px;
+					right: -9999px;
+				};
 			}
+
+			@media (max-width: 767px) {
+				ajp-image {
+					padding: 6px;
+				}
+			}
+
+			@media (min-width: 850px) {
+				ajp-image {
+					padding: 6px 83px;
+				}
+      }
 		</style>
 
 		<div class="main-frame">
