@@ -4,7 +4,7 @@ React is great and has been catching my attention more and more. At the beginnin
 
 Today I only spent a couple hours digging through their documentation and just starting out with their Tic-Tac-Toe tutorial.
 
-![](../assets/images/p42.png "My results of the Tic Tac Toe tutorial")
+![](../src/assets/images/p42.png "My results of the Tic Tac Toe tutorial")
 
 Here is what I like and found out:
 * I like how there are less things in install like git and bower. I could be wrong about this and might need these in the future.

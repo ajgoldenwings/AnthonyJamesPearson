@@ -136,7 +136,7 @@ polymer serve
 
 You will probably have a couple issues when opening this, but it should look like:
 
-![](../assets/images/2017-10-21_1.png "What site should look like")
+![](../src/assets/images/2017-10-21_1.png "What site should look like")
 
 So, there are some missing features and there are ways to make this better. For instance, there is no navigation buttons to other Markdown Documents or you can just dynamically place the document file location within the Markdown element, but I leave this to you to figure out. Also, if you want, you can look at the differences between my blog and this post. This blog has this feature fully build out and you may cheat and evolve your Markdown site using my repositories on Github:
 
