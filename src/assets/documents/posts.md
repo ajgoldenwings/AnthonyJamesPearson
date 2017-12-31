@@ -36,7 +36,7 @@ This is the first part if you want to create your own backend or really anything
 
 &nbsp;
 
-> ### [Register Domain With Route 52 and Direct it to S3](#post/2016-05-18_Register-Domain-With-Route 52-and-Direct-it-to-S3)
+> ### [Register Domain With Route 52 and Direct it to S3](#post/2016-05-18_Register-Domain-With-Route-52-and-Direct-it-to-S3)
 ###### 2016-05-18
 I bet you have been wanting your own website. This will show ya. I hope you can do it. This will show what it takes to get a domain and call it yours. Good luck you guys and girls.
 

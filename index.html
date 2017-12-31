@@ -38,10 +38,33 @@
     </style>
 	</head>
 	<body>
-		<ajp-app></ajp-app>
-    <noscript>
-      JavaScript needs to be enabled to view this site.
+		<ajp-app><div id="disqus_thread"></div></ajp-app>
+
+		<noscript>
+			JavaScript needs to be enabled to view this site.
 		</noscript>
+
+<script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'anthonyjamespearson';
+	var disqus_identifier = 'initial';
+	var disqus_url = 'http://anthonyjamespearson.com/#post/initial';
+	var disqus_config = function () {
+		this.language = "en";
+	};
+	/* * * Disqus Reset Function * * */
+	var reset = function (newIdentifier, newUrl, newTitle, newLanguage) {
+		DISQUS.reset({
+			reload: true,
+			config: function () {
+				this.page.identifier = newIdentifier;
+				this.page.url = newUrl;
+				this.page.title = newTitle;
+				this.language = newLanguage;
+			}
+		});
+	};
+</script>
 
 <!-- Start of StatCounter Code for Default Guide -->
 <script type="text/javascript">
@@ -50,5 +73,6 @@ var scJsHost = (("https:" == document.location.protocol) ? "https://secure." : "
 document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>");
 </script>
 <!-- End of StatCounter Code for Default Guide -->
+
 	</body>
 </html>

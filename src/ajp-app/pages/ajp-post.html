@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/ajp-disqus-comments/ajp-disqus-comments.html">
 <link rel="import" href="../../../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../styles/shared-styles.html">
 
@@ -41,6 +42,7 @@
 		</style>
 
 		<div class="main-frame">
+			<ajp-disqus-comments subdomain="anthonyjamespearson" identifier="[[filename]]" category-id="scienceandtechnology"><slot></slot></ajp-disqus-comments>
 
 			<marked-element>
 				<div slot="markdown-html"></div>
@@ -48,6 +50,7 @@
 					Loading Posts...
 				</script>
 			</marked-element>
+
 		</div>
 	</template>
 
@@ -60,16 +63,13 @@
 					filename: {
 						type: String,
 						reflectToAttribute: true,
-						value: 'about'
+						notify: true
 					},
-
 					filepath: {
 						type: String,
 						reflectToAttribute: true,
 						computed: '_filepath(filename)'
-					},
-
-					route: Object
+					}
 				}
 			}
 

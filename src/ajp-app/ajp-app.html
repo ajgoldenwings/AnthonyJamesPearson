@@ -178,13 +178,16 @@
 					</template>
 				</iron-pages>
 
+
+
 				<iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="home">
 					<ajp-home name="home"></ajp-home>
-					<ajp-post name="post" filename="[[subrouteData.id]]"></ajp-post>
+					<ajp-post name="post" filename="[[subrouteData.id]]"><slot></slot></ajp-post>
 					<ajp-posts name="posts"></ajp-posts>
 					<ajp-about name="about"></ajp-about>
 					<ajp-contact name="contact"></ajp-contact>
 				</iron-pages>
+
 
 				<footer>
 					<small><a href="https://twitter.com/ajgoldenwings" title="Twitter" target="_blank">A site made by Anthony</a></small>
