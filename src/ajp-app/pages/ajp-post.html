@@ -42,8 +42,6 @@
 		</style>
 
 		<div class="main-frame">
-			<ajp-disqus-comments subdomain="anthonyjamespearson" identifier="[[filename]]" category-id="scienceandtechnology"><slot></slot></ajp-disqus-comments>
-
 			<marked-element>
 				<div slot="markdown-html"></div>
 				<script type="text/markdown" src="[[filepath]]">
@@ -51,6 +49,7 @@
 				</script>
 			</marked-element>
 
+			<ajp-disqus-comments subdomain="anthonyjamespearson" identifier="[[filename]]" category-id="scienceandtechnology"><slot></slot></ajp-disqus-comments>
 		</div>
 	</template>
 
