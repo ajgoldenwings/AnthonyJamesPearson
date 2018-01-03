@@ -1,7 +1,14 @@
 {
+	"builds": [{
+    "bundle": true,
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+  }],
   "lint": {
     "rules": [
       "polymer-2"
     ]
-  }
+	},
+	"shell": "src/ajp-app/ajp-app.html"
 }
