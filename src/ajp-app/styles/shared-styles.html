@@ -49,12 +49,20 @@
 				text-align: center;
 			}
 
-			ajp-image {
+			h2 {
+				font-size: 1.6em;
+				font-weight: 500;
+				margin: 16px 0;
+			}
+
+			.image-link ajp-image {
 				position: relative;
 				height: 240px;
+				max-width: 100%;
 				overflow: hidden;
 				--ajp-image-img: {
 					position: absolute;
+					max-width: 100%;
 					top: 0;
 					bottom: 0;
 					left: -9999px;
@@ -63,19 +71,13 @@
 				};
 			}
 
-			h2 {
-				font-size: 1.6em;
-				font-weight: 500;
-				margin: 16px 0;
-			}
-
 			@media (max-width: 767px) {
-				ajp-image {
-					height: 180px;
-				}
-
 				h2 {
 					margin: 24px 0;
+				}
+
+				.image-link ajp-image {
+					height: 180px;
 				}
 			}
 

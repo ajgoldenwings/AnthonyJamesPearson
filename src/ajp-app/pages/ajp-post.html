@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/ajp-disqus-comments/ajp-disqus-comments.html">
 <link rel="import" href="../../../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../styles/shared-styles.html">
 
@@ -11,19 +12,44 @@
         padding: 10px;
       }
 
-			img {
-				height: 240px;
+			ajp-image {
+				overflow: hidden;
+				clear:both;
+				padding: 6px 42px 20px 42px;
+				--ajp-image-img: {
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+					position: static;
+					top: 0;
+					bottom: 0;
+					left: -9999px;
+					right: -9999px;
+					max-height: 400px;
+					display: table-cell;
+				};
 			}
+
+			@media (max-width: 767px) {
+				ajp-image {
+					padding: 6px 6px 20px 6px;
+				}
+			}
+
+			@media (min-width: 850px) {
+				ajp-image {
+					padding: 6px 83px 20px 83px;
+				}
+      }
 		</style>
 
 		<div class="main-frame">
-
 			<marked-element>
 				<div slot="markdown-html"></div>
 				<script type="text/markdown" src="[[filepath]]">
 					Loading Posts...
 				</script>
 			</marked-element>
+
+			<ajp-disqus-comments subdomain="anthonyjamespearson" identifier="[[filename]]" category-id="scienceandtechnology"><slot></slot></ajp-disqus-comments>
 		</div>
 	</template>
 
@@ -36,16 +62,13 @@
 					filename: {
 						type: String,
 						reflectToAttribute: true,
-						value: 'about'
+						notify: true
 					},
-
 					filepath: {
 						type: String,
 						reflectToAttribute: true,
 						computed: '_filepath(filename)'
-					},
-
-					route: Object
+					}
 				}
 			}
 

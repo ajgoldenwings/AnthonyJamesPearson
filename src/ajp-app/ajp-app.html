@@ -10,7 +10,6 @@
 <link rel="import" href="../../bower_components/ajp-image/ajp-image.html">
 
 <link rel="import" href="styles/shared-styles.html">
-
 <link rel="import" href="pages/ajp-page-data.html">
 
 <link rel="lazy-import" href="pages/ajp-home.html?version=1.3">
@@ -126,11 +125,10 @@
 					border-bottom: 3px red solid;
 				}
       }
-
-
 		</style>
 
 		<app-location route="{{route}}" use-hash-as-path></app-location>
+		<app-location route="{{nohashroute}}"></app-location>
 		<app-route
 			route="{{route}}"
 			pattern=":section"
@@ -180,7 +178,7 @@
 
 				<iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="home">
 					<ajp-home name="home"></ajp-home>
-					<ajp-post name="post" filename="[[subrouteData.id]]"></ajp-post>
+					<ajp-post name="post" filename="[[subrouteData.id]]"><slot></slot></ajp-post>
 					<ajp-posts name="posts"></ajp-posts>
 					<ajp-about name="about"></ajp-about>
 					<ajp-contact name="contact"></ajp-contact>
@@ -229,6 +227,8 @@
 						computed: '_computeSelectedTab(sections, sectionData.section)'
 					},
 
+					nohashroute: Object,
+
 					pages: Array,
 
 					sectionData: Object,
@@ -242,14 +242,23 @@
 			}
 
 			_computeSelectedTab(sections, section) {
-				if (section == 'post') {
+				if (section == 'post' || (section === undefined && document.URL.includes("/post/"))) {
 					section = 'posts';
 				}
+
 				return sections.indexOf(section);
 			}
 
 			_pageChanged(page) {
-				var currentPage = page || 'home';
+				var currentPage = '';
+
+				if (page !== undefined || !document.URL.includes("/post/")) {
+					currentPage =page || 'home'
+				} else {
+					this.set('route.path', 'post/' + document.URL.split('/post/')[1]);
+					this.set('nohashroute.path', '');
+				}
+
 				Polymer.AppLayout.scroll({ top: 0, behavior: 'silent' });
 				var resolvedPageUrl = this.resolveUrl('pages/ajp-' + currentPage + '.html');
 

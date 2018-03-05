@@ -4,7 +4,9 @@ Blog by Anthony
 
 ## Install the Polymer-CLI
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Follow this page and make sure everything checks out. Then run `polymer serve` to serve your application locally.
+
+Run `bower update` to get all of the dependencies.
 
 ## Viewing Your Application
 
