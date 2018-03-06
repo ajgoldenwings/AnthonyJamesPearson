@@ -1,5 +1,11 @@
 # Posts
 
+> ### [Learning More React by Creating a Madlib](#post/2018-03-04_Learning-More-React-by-Creating-a-Madlib)
+###### 2018-03-04
+Created a Madlib. In React. And it is funny. Come take a gander at the post to see the Code and Madlib.
+
+&nbsp;
+
 > ### [How to Create an Event Firebase and React Single Page Web App: Day 0](#post/2017-12-17_How-to-Create-an-Event-Firebase-and-React-Single-Page-Web-App-Day0)
 ###### 2017-12-17
 Learn how to create a single page application using React as a front end and Firebase as your backend. We will start with initializing your project.
