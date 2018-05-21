@@ -2,7 +2,7 @@
 
 > ### [Membership Role Policy-Based Authorization in ASP.NET Core](#post/2018-05-20_Membership-Role-Policy-Based-Authorization-in-ASP-NET-Core)
 ###### 2018-05-20
-Want to create a policy based authorize attribute for your website? Look here for an example how I seperated privileges out based on roles per organizations.
+Want to create a policy based authorize attribute for your website? Look here for an example how I separate privileges out based on roles per organizations.
 
 &nbsp;
 
